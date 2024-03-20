@@ -3,26 +3,53 @@
 # --- Email Class --- #
 # Create the class, constructor and methods to create a new Email object.
 class Email:
-    # Declare the class variable, with default value, for emails. 
+    """
+    A class used to represent an email.
+
+    ...
+
+    Attributes
+    ----------
+    has_been_read: default value for emails. 
+
+    Methods
+    -------
+    mark_as_read: method to change 'has_been_read' emails from False to True. 
+    """
+    
     has_been_read = False
     # Initialise the instance variables for emails.
     def __init__(self, email_address, subject_line, email_content):
         self.email_address = email_address
         self.subject_line = subject_line
         self.email_content = email_content
-    # Create the method to change 'has_been_read' emails from False to True.
+    
     def mark_as_read(self):
         self.has_been_read = True 
 
 
 # --- Inbox class --- #
 class Inbox:
-    # --- Lists --- #
-    # Initialise an empty list to store the email objects.
+    
+    """
+    A class used to represent the inbox.
+
+    ...
+
+    Attributes
+    ----------
+    inbox_list = []: Initialise an empty list to store the email objects.
+    
+    Methods
+    -------
+    populate_inbox(): creates 3 sample emails and add it to the Inbox list.      
+    list_emails(): prints the emails' subject_line, along with a corresponding number.
+    read_email(index): a function which displays a selected email.   
+    """
+    
     inbox_list = []
 
     def populate_inbox():
-        # Create 3 sample emails and add it to the Inbox list. 
         sample1 = Email("sample1@gmail.com", "Test1", "Testing")
         sample2 = Email("sample2@gmail.com", "Test2", "Testing, testing")
         sample3 = Email("sample3@gmail.com", "Test3", "Testing, testing, testing")
@@ -32,12 +59,10 @@ class Inbox:
         Inbox.inbox_list.append(sample3)
    
     def list_emails():
-        # Create a function which prints the emails subject_line, along with a corresponding number.
         for count, email in enumerate(Inbox.inbox_list):
             print(f"*email {count + 1}* subject: {email.subject_line}")
 
     def read_email(index):
-        # Create a function which displays a selected email.
         print(f'\n from:\t\t{Inbox.inbox_list[index-1].email_address}')
         print(f'\n subject:\t{Inbox.inbox_list[index-1].subject_line}')
         print(f'\n message:\t{Inbox.inbox_list[index-1].email_content}')
@@ -46,9 +71,10 @@ class Inbox:
         Inbox.inbox_list[index-1].mark_as_read()
 # --- Email Program --- #
 
-# Call the function to populate the Inbox for further use in your program.
+# Calling the function to populate the Inbox for further use in the program.
 Inbox.populate_inbox()
-# Fill in the logic for the various menu operations.
+
+#logic for the various menu operations.
 menu = True
 
 while True:
